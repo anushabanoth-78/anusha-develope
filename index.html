@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Banoth Anusha – AI/ML & Software Engineer</title>
+<meta name="description" content="Portfolio of Banoth Anusha, B.Tech CSE graduate from IIT Goa. NLP, computer vision and full-stack RAG projects.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap">
+<style>
+:root{--bg:#f4f3ef;--surface:#fff;--text:#14141a;--muted:#5d5d6b;--accent:#6d4aff;--border:#dcdbe3;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#08080d;--surface:#12121a;--text:#f2f2f7;--muted:#9a9aab;--accent:#8f7bff;--border:#23232f}}
+:root[data-theme="dark"]{--bg:#08080d;--surface:#12121a;--text:#f2f2f7;--muted:#9a9aab;--accent:#8f7bff;--border:#23232f}
+*{box-sizing:border-box}
+html{scroll-padding-top:70px;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'Space Grotesk',system-ui,sans-serif;line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+nav{position:fixed;top:0;left:0;right:0;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:calc(16px + env(safe-area-inset-top,0px)) 24px 16px;backdrop-filter:blur(10px)}
+nav b{letter-spacing:.1em}
+nav div{display:flex;gap:20px;font-size:14px;color:var(--muted);align-items:center}
+nav a:hover{color:var(--accent)}
+button{font:inherit;background:none;border:1px solid var(--border);color:var(--text);border-radius:999px;padding:4px 12px;cursor:pointer}
+.hero{position:relative;height:100vh;min-height:580px;display:grid;place-items:center;text-align:center;overflow:hidden}
+#c{position:absolute;inset:0;width:100%;height:100%;cursor:grab;touch-action:pan-y}
+.hero .in{position:relative;padding:0 20px}
+.hero small{color:var(--accent);letter-spacing:.25em;text-transform:uppercase;font-size:12px}
+.hero h1{font-size:clamp(40px,9vw,104px);line-height:1;margin:14px 0;font-weight:700;letter-spacing:-.03em}
+.hero p{color:var(--muted);max-width:520px;margin:0 auto 18px}
+.btn{display:inline-block;padding:11px 24px;border-radius:999px;font-weight:500;margin:6px 6px 0}
+.pri{background:var(--accent);color:#fff}
+.gh{border:1px solid var(--border);background:var(--bg)}
+.hint{position:absolute;bottom:24px;left:0;right:0;text-align:center;color:var(--muted);font-size:12px;letter-spacing:.2em;text-transform:uppercase;pointer-events:none}
+section.s{max-width:1040px;margin:auto;padding:80px 22px}
+.lbl{color:var(--accent);font-size:13px;letter-spacing:.2em;text-transform:uppercase}
+h2{font-size:clamp(28px,5vw,44px);margin:8px 0 28px;letter-spacing:-.02em}
+.about{color:var(--muted);font-size:18px;max-width:760px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;margin-top:30px}
+.stat{border:1px solid var(--border);background:var(--surface);border-radius:16px;padding:18px}
+.stat b{display:block;font-size:32px;color:var(--accent)}
+.stat span{color:var(--muted);font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:20px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:24px;transition:transform .3s,border-color .3s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-6px);border-color:var(--accent)}
+.card small{color:var(--muted)}
+.card h3{margin:4px 0 10px;font-size:20px}
+.card p{color:var(--muted);font-size:14px;margin:0 0 14px;flex:1}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.tags span{font-size:12px;border:1px solid var(--border);border-radius:999px;padding:2px 10px;color:var(--muted)}
+.card a{color:var(--accent);font-size:14px;font-weight:500;margin-right:16px}
+.srow{display:grid;grid-template-columns:minmax(140px,1fr) 3fr;gap:16px;padding:16px 0;border-top:1px solid var(--border)}
+.srow h3{margin:0;font-size:16px;color:var(--accent)}
+.srow p{margin:0;color:var(--muted);font-size:15px}
+.cta{text-align:center;padding:100px 22px}
+footer{text-align:center;color:var(--muted);font-size:13px;padding:24px;border-top:1px solid var(--border)}
+@media(max-width:560px){.srow{grid-template-columns:1fr;gap:4px}nav div a.h{display:none}}
+</style>
+</head>
+<body>
+<nav><b>BA.</b><div><a class="h" href="#about">About</a><a class="h" href="#projects">Projects</a><a class="h" href="#skills">Skills</a><a class="h" href="#contact">Contact</a><button id="t" aria-label="Toggle theme">🌓</button></div></nav>
+
+<header class="hero">
+<canvas id="c"></canvas>
+<div class="in">
+<small id="h1">AI/ML Engineer · Software Engineer</small>
+<h1 id="h2">Banoth Anusha</h1>
+<p id="h3">I take AI ideas all the way to working products: NLP, computer vision and full-stack RAG systems.</p>
+<a class="btn pri" href="#projects">View Projects</a><a class="btn gh" href="resume.pdf">Download Resume</a>
+</div>
+<div class="hint">Drag to rotate · Scroll to explore</div>
+</header>
+
+<section class="s" id="about">
+<div class="lbl rv">About</div><h2 class="rv">Hi, I’m Anusha</h2>
+<p class="about rv">B.Tech graduate in Computer Science and Engineering from IIT Goa (2026). I enjoy building AI systems end to end: data preparation, model development, evaluation and deployment. I work with Python, C++ and SQL, and I’m looking for an entry-level AI/ML Engineer or Software Engineer role.</p>
+<div class="stats">
+<div class="stat rv"><b>98%</b><span>Fake news test accuracy</span></div>
+<div class="stat rv"><b>3,500+</b><span>Frames tracked in cricket footage</span></div>
+<div class="stat rv"><b>65+</b><span>Persistent player IDs</span></div>
+<div class="stat rv"><b>3</b><span>End-to-end AI projects</span></div>
+</div>
+</section>
+
+<section class="s" id="projects">
+<div class="lbl rv">Selected Work</div><h2 class="rv">Projects</h2>
+<div class="grid">
+<div class="card rv"><small>Nov 2025 – Feb 2026</small><h3>Fake News & Misinformation Detector</h3>
+<p>End-to-end NLP pipeline that classifies news as REAL or FAKE using TF-IDF and Logistic Regression, reaching 98% test accuracy. Evaluated with a confusion matrix, ROC and precision–recall curves, and deployed as a live Streamlit app.</p>
+<div class="tags"><span>Python</span><span>Scikit-learn</span><span>TF-IDF</span><span>Streamlit</span></div>
+<div><a href="https://fake-news-detector-mtehccappl5kvfmycnu63vq.streamlit.app/" target="_blank" rel="noopener">Live Demo ↗</a><a href="https://github.com/anushabanoth-78/Fake-News-Detector" target="_blank" rel="noopener">GitHub ↗</a></div></div>
+
+<div class="card rv"><small>Nov 2025 – Apr 2026</small><h3>Sports Player Detection & Tracking</h3>
+<p>YOLOv8 + ByteTrack pipeline for multi-person tracking across 3,500+ frames of ICC T20 cricket footage. Keeps 65+ player IDs through occlusion, with speed estimation (km/h), motion trails, heatmaps and a live HUD. Benchmarked ByteTrack against BoT-SORT.</p>
+<div class="tags"><span>YOLOv8</span><span>ByteTrack</span><span>OpenCV</span><span>Supervision</span></div>
+<div><a href="https://github.com/anushabanoth-78/sports-tracker_project" target="_blank" rel="noopener">GitHub ↗</a></div></div>
+
+<div class="card rv"><small>2026</small><h3>Enterprise RAG Knowledge Assistant</h3>
+<p>Full-stack app where users upload PDFs and get streaming answers with page-level citations. Hybrid retrieval (pgvector + full-text search with Reciprocal Rank Fusion), cross-encoder reranking, Celery + Redis ingestion, JWT auth and per-user isolation.</p>
+<div class="tags"><span>FastAPI</span><span>Next.js</span><span>PostgreSQL</span><span>Docker</span></div>
+<div><a href="https://github.com/anushabanoth-78/enterprise-rag-knowledge-assistant" target="_blank" rel="noopener">GitHub ↗</a></div></div>
+</div>
+</section>
+
+<section class="s" id="skills">
+<div class="lbl rv">Toolbox</div><h2 class="rv">Skills</h2>
+<div class="srow rv"><h3>Programming</h3><p>Python, C++, SQL, TypeScript</p></div>
+<div class="srow rv"><h3>AI & ML</h3><p>Machine Learning, Deep Learning, NLP, Computer Vision, RAG, Object Detection and Tracking, Scikit-learn, YOLOv8, OpenCV</p></div>
+<div class="srow rv"><h3>Backend & Web</h3><p>FastAPI, Next.js, PostgreSQL, pgvector, Redis, Celery, Docker, REST APIs, JWT, Streamlit</p></div>
+<div class="srow rv"><h3>Core CS</h3><p>Data Structures and Algorithms, Operating Systems, Computer Networks</p></div>
+<div class="srow rv"><h3>Tools</h3><p>Git, GitHub, Linux, VS Code</p></div>
+</section>
+
+<section class="s" id="education">
+<div class="lbl rv">Background</div><h2 class="rv">Education & More</h2>
+<div class="srow rv"><h3>2022 – 2026</h3><p><b>B.Tech, Computer Science and Engineering</b> – Indian Institute of Technology Goa. Bachelor’s Thesis Project: fake news classification (NLP) and multi-player tracking (computer vision).</p></div>
+<div class="srow rv"><h3>Certification</h3><p>The Complete Full-Stack Web Development Bootcamp (61.5 hrs), Udemy · July 2025</p></div>
+<div class="srow rv"><h3>Leadership</h3><p>Event Coordinator, Cultrang Fest · Team Member, Motorsports Club (IIT Goa)</p></div>
+</section>
+
+<section class="cta" id="contact">
+<div class="lbl rv">Let’s connect</div>
+<h2 class="rv">Open to AI/ML and Software Engineer roles</h2>
+<a class="btn pri rv" href="mailto:banothanusha900@gmail.com">banothanusha900@gmail.com</a><br>
+<a class="btn gh rv" href="https://www.linkedin.com/in/anusha-banoth-b56404314" target="_blank" rel="noopener">LinkedIn</a>
+<a class="btn gh rv" href="https://github.com/anushabanoth-78" target="_blank" rel="noopener">GitHub</a>
+<a class="btn gh rv" href="https://leetcode.com/u/anushabanoth/" target="_blank" rel="noopener">LeetCode</a>
+</section>
+<footer>© 2026 Banoth Anusha · Hyderabad, India</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+document.getElementById('t').onclick=function(){var r=document.documentElement,d=r.getAttribute('data-theme');var dark=d?d==='dark':matchMedia('(prefers-color-scheme: dark)').matches;r.setAttribute('data-theme',dark?'light':'dark');if(window.recolor)recolor()};
+var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(window.gsap&&window.ScrollTrigger&&!reduce){
+gsap.registerPlugin(ScrollTrigger);
+gsap.from(['#h1','#h2','#h3'],{y:50,opacity:0,duration:1,stagger:.2,ease:'power3.out'});
+gsap.utils.toArray('.rv').forEach(function(e){gsap.from(e,{y:40,opacity:0,duration:.8,ease:'power2.out',scrollTrigger:{trigger:e,start:'top 90%'}})});
+}
+if(window.THREE){
+var cv=document.getElementById('c'),R=new THREE.WebGLRenderer({canvas:cv,alpha:true,antialias:true});
+R.setPixelRatio(Math.min(devicePixelRatio,2));
+var S=new THREE.Scene(),C=new THREE.PerspectiveCamera(50,1,.1,100);C.position.z=6;
+var col=new THREE.Color(),mat=new THREE.MeshBasicMaterial({wireframe:true,transparent:true,opacity:.5});
+var knot=new THREE.Mesh(new THREE.TorusKnotGeometry(1.5,.45,140,18),mat);S.add(knot);
+var core=new THREE.Mesh(new THREE.IcosahedronGeometry(.8,1),new THREE.MeshBasicMaterial({wireframe:true,transparent:true,opacity:.8}));S.add(core);
+var pg=new THREE.BufferGeometry(),pa=[];for(var i=0;i<400;i++){pa.push((Math.random()-.5)*14,(Math.random()-.5)*10,(Math.random()-.5)*8)}
+pg.setAttribute('position',new THREE.Float32BufferAttribute(pa,3));
+var pm=new THREE.PointsMaterial({size:.03,transparent:true,opacity:.7}),pts=new THREE.Points(pg,pm);S.add(pts);
+window.recolor=function(){col.set(getComputedStyle(document.documentElement).getPropertyValue('--accent').trim()||'#6d4aff');mat.color.copy(col);core.material.color.copy(col);pm.color.copy(col)};
+recolor();matchMedia('(prefers-color-scheme: dark)').addEventListener('change',function(){setTimeout(recolor,50)});
+function size(){var w=cv.clientWidth,h=cv.clientHeight;R.setSize(w,h,false);C.aspect=w/h;C.updateProjectionMatrix();knot.scale.setScalar(w<600?.65:1);core.scale.copy(knot.scale)}
+size();addEventListener('resize',size);
+var drag=false,lx=0,ly=0,vy=0,vx=0,mx=0,my=0;
+cv.addEventListener('pointerdown',function(e){drag=true;lx=e.clientX;ly=e.clientY;cv.style.cursor='grabbing'});
+addEventListener('pointerup',function(){drag=false;cv.style.cursor='grab'});
+addEventListener('pointermove',function(e){mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5;if(drag){vy+=(e.clientX-lx)*.0015;vx+=(e.clientY-ly)*.0015;lx=e.clientX;ly=e.clientY}});
+(function loop(){
+var sc=scrollY/innerHeight;
+knot.rotation.y+=(reduce?0:.004)+vy;knot.rotation.x+=(reduce?0:.002)+vx;
+vy*=.94;vx*=.94;
+knot.rotation.z=sc*1.5;core.rotation.y-=.01;core.rotation.x=knot.rotation.x;
+pts.rotation.y=sc*.5+mx*.2;
+C.position.x+=(mx*1.2-C.position.x)*.05;C.position.y+=(-my*.8-C.position.y)*.05;C.lookAt(0,0,0);
+cv.style.opacity=Math.max(0,1-sc*1.2);
+R.render(S,C);requestAnimationFrame(loop)})();
+}
+</script>
+</body>
+</html>
