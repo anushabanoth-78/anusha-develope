@@ -3,12 +3,13 @@
    1. Colors (light and dark)
    2. Basic reset
    3. Navbar
-   4. Hero
-   5. Sections, about, stats
-   6. Project cards
-   7. Skills / education rows
-   8. Contact, footer
-   9. Mobile screens
+   4. Hero (text left, photo right)
+   5. 3D section
+   6. Sections, about, stats
+   7. Project cards
+   8. Skills / education rows
+   9. Contact, footer
+   10. Mobile screens
    ========================================================= */
 
 
@@ -88,7 +89,8 @@ h2 {
   justify-content: space-between;
   align-items: center;
   padding: 16px 24px;
-  backdrop-filter: blur(10px);
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
 }
 
 .logo {
@@ -119,31 +121,28 @@ h2 {
 }
 
 
-/* ---------- 4. HERO ---------- */
+/* ---------- 4. HERO (text left, photo right) ---------- */
 .hero {
-  position: relative;
-  height: 100vh;
-  min-height: 580px;
-  display: grid;
-  place-items: center;
-  text-align: center;
-  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 100px 22px 60px;
 }
 
-/* The canvas sits behind the text and fills the whole hero */
-#hero-canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
+.hero-content {
+  max-width: 1040px;
   width: 100%;
-  height: 100%;
-  cursor: grab;
-  touch-action: pan-y;   /* phone can still scroll up and down */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;          /* text and photo side by side */
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
 }
 
 .hero-text {
-  position: relative;
-  padding: 0 20px;
+  flex: 1;
+  order: 2;                     /* order 1 = left side */
 }
 
 .small-title {
@@ -155,34 +154,35 @@ h2 {
 }
 
 .hero h1 {
-  font-size: clamp(40px, 9vw, 104px);
-  line-height: 1;
+  font-size: clamp(40px, 7vw, 80px);
+  line-height: 1.05;
   margin: 14px 0;
 }
 
 .hero-description {
   color: var(--muted);
-  max-width: 520px;
-  margin: 0 auto 18px;
+  font-size: 18px;
+  max-width: 480px;
+  margin: 0 0 22px;
 }
-
-.hero-hint {
-  position: absolute;
-  bottom: 24px;
-  width: 100%;
-  text-align: center;
-  color: var(--muted);
-  font-size: 12px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  pointer-events: none;
+.hero-photo {
+  order: 1;                     /* order 1 = left side */
+  flex-shrink: 0;               /* photo never gets squeezed */
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 20%;  /* keeps the face inside the circle */
+  border: 3px solid var(--accent);
+  padding: 6px;
+  background: var(--bg);
 }
 
 /* Buttons used in hero and contact */
 .button {
   display: inline-block;
   padding: 11px 24px;
-  margin: 6px;
+  margin: 6px 12px 6px 0;
   border-radius: 999px;
   font-weight: 500;
 }
@@ -198,7 +198,38 @@ h2 {
 }
 
 
-/* ---------- 5. SECTIONS, ABOUT, STATS ---------- */
+/* ---------- 5. 3D SECTION ---------- */
+.three-box {
+  position: relative;
+  height: 420px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+#shape-canvas {
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+  touch-action: pan-y;   /* phone can still scroll up and down */
+}
+
+.three-hint {
+  position: absolute;
+  bottom: 14px;
+  width: 100%;
+  margin: 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+
+/* ---------- 6. SECTIONS, ABOUT, STATS ---------- */
 .section {
   max-width: 1040px;
   margin: 0 auto;
@@ -215,27 +246,12 @@ h2 {
 
 .about-layout {
   display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 44px;
 }
 
 .about-text {
-  flex: 1;
-  min-width: 260px;
+  max-width: 760px;
   color: var(--muted);
   font-size: 18px;
-}
-
-.my-photo {
-  width: 260px;
-  height: 260px;
-  border-radius: 50%;
-  object-fit: cover;
-  object-position: center 20%;   /* keeps the face in the circle */
-  border: 3px solid var(--accent);
-  padding: 5px;
-  background: var(--bg);
 }
 
 .stats {
@@ -264,7 +280,7 @@ h2 {
 }
 
 
-/* ---------- 6. PROJECT CARDS ---------- */
+/* ---------- 7. PROJECT CARDS ---------- */
 .project-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
@@ -326,7 +342,7 @@ h2 {
 }
 
 
-/* ---------- 7. SKILLS / EDUCATION ROWS ---------- */
+/* ---------- 8. SKILLS / EDUCATION ROWS ---------- */
 .info-row {
   display: grid;
   grid-template-columns: minmax(140px, 1fr) 3fr;
@@ -348,11 +364,16 @@ h2 {
 }
 
 
-/* ---------- 8. CONTACT AND FOOTER ---------- */
+/* ---------- 9. CONTACT AND FOOTER ---------- */
 .contact {
   text-align: center;
   padding-top: 100px;
   padding-bottom: 100px;
+}
+
+/* in the contact section the buttons are centered, so equal margins */
+.contact .button {
+  margin: 6px;
 }
 
 .footer {
@@ -364,7 +385,28 @@ h2 {
 }
 
 
-/* ---------- 9. MOBILE SCREENS ---------- */
+/* ---------- 10. MOBILE SCREENS ---------- */
+@media (max-width: 700px) {
+  .hero-content {
+    flex-direction: column;       /* name first, photo below it */
+    text-align: center;
+    gap: 30px;
+  }
+
+  .hero-description {
+    margin: 0 auto 22px;
+  }
+
+  .hero-photo {
+    width: 220px;
+    height: 220px;
+  }
+
+  .hero .button {
+    margin: 6px;
+  }
+}
+
 @media (max-width: 560px) {
   .hide-on-mobile {
     display: none;
@@ -373,12 +415,6 @@ h2 {
   .info-row {
     grid-template-columns: 1fr;
     gap: 4px;
-  }
-
-  .my-photo {
-    width: 200px;
-    height: 200px;
-    margin: 0 auto;
   }
 }
 

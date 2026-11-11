@@ -7,7 +7,7 @@
   <meta name="description" content="Portfolio of Banoth Anusha, B.Tech CSE graduate from IIT Goa. NLP, computer vision and full-stack RAG projects.">
 
   <!-- Google font -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href=" "
 
   <!-- My own styles -->
   <link rel="stylesheet" href="css/style.css">
@@ -26,45 +26,47 @@
     </div>
   </nav>
 
-  <!-- ===== HERO SECTION (3D shape is drawn inside the canvas) ===== -->
+  <!-- ===== HERO SECTION (photo left, text right) ===== -->
   <header class="hero" id="home">
-    <canvas id="hero-canvas"></canvas>
+    <div class="hero-content">
 
-    <div class="hero-text">
-      <p class="small-title">AI/ML Engineer · Software Engineer</p>
-      <h1>Banoth Anusha</h1>
-      <p class="hero-description">
-        I take AI ideas all the way to working products: NLP, computer vision and full-stack RAG systems.
-      </p>
-      <a href="#projects" class="button button-main">View Projects</a>
-      <a href="resume.pdf" class="button button-outline">Download Resume</a>
+      <img class="hero-photo" src="imges/Anu.png" alt="Photo of Banoth Anusha" width="320" height="320">
+
+      <div class="hero-text">
+  <p class="small-title">About</p>
+  <h1>Banoth Anusha</h1>
+  <p class="hero-description">
+    Computer Science graduate from IIT Goa, passionate about Software Engineering,
+    AI/ML, Backend and Full-Stack development. I build reliable, scalable
+    applications with Python, C++, SQL, FastAPI, Next.js and PostgreSQL.
+    Currently seeking Software Engineer, Backend, Full-Stack or AI/ML roles.
+  </p>
+  <a href="#projects" class="button button-main">View Projects</a>
+  <a href="resume.pdf" class="button button-outline" target="_blank" rel="noopener">View Resume</a>
+  <a href="resume.pdf" class="button button-outline" download>Download Resume</a>
+</div>
+
     </div>
-
-    <p class="hero-hint">Drag to rotate · Scroll to explore</p>
   </header>
 
-  <!-- ===== ABOUT SECTION ===== -->
+  <!-- ===== STATS (the About link in the navbar comes here) ===== -->
   <section class="section" id="about">
-    <div class="about-layout">
-      <img class="my-photo" src="imges/Anu.png" alt="Photo of Banoth Anusha" width="260" height="260">
-
-      <div class="about-text">
-        <p class="label">About</p>
-        <h2>Hi, I’m Anusha</h2>
-        <p>
-          B.Tech graduate in Computer Science and Engineering from IIT Goa (2026).
-          I enjoy building AI systems end to end: data preparation, model development,
-          evaluation and deployment. I work with Python, C++ and SQL, and I’m looking
-          for an entry-level AI/ML Engineer or Software Engineer role.
-        </p>
-      </div>
-    </div>
-
     <div class="stats">
       <div class="stat-box"><strong>98%</strong><span>Fake news test accuracy</span></div>
       <div class="stat-box"><strong>3,500+</strong><span>Frames tracked in cricket footage</span></div>
       <div class="stat-box"><strong>65+</strong><span>Persistent player IDs</span></div>
       <div class="stat-box"><strong>3</strong><span>End-to-end AI projects</span></div>
+    </div>
+  </section>
+
+  <!-- ===== 3D SECTION ===== -->
+  <section class="section" id="playground">
+    <p class="label">Interactive</p>
+    <h2>Play with it</h2>
+
+    <div class="three-box">
+      <canvas id="shape-canvas"></canvas>
+      <p class="three-hint">Drag to rotate</p>
     </div>
   </section>
 
