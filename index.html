@@ -7,214 +7,257 @@
   <meta name="description" content="Portfolio of Banoth Anusha, B.Tech CSE graduate from IIT Goa. NLP, computer vision and full-stack RAG projects.">
 
   <!-- Google font -->
-  <link rel="stylesheet" href=" "
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap">
 
-  <!-- My own styles -->
+  <!-- Your styles (extra.css must stay AFTER style.css) -->
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/extra.css">
 </head>
 <body>
 
-  <!-- ===== NAVIGATION BAR ===== -->
+  <!-- ===== NAVBAR ===== -->
   <nav class="navbar">
-    <a href="#home" class="logo">BA.</a>
+    <a href="#home" class="logo">Portfolio</a>
+
     <div class="nav-links">
-      <a href="#about" class="hide-on-mobile">About</a>
-      <a href="#projects" class="hide-on-mobile">Projects</a>
-      <a href="#skills" class="hide-on-mobile">Skills</a>
+      <a href="#home" class="hide-on-mobile">Home</a>
+
+      <div class="dropdown hide-on-mobile">
+        <a href="#about">About ▾</a>
+        <div class="dropdown-menu">
+          <a href="#education">Education</a>
+        </div>
+      </div>
+
+      <div class="dropdown hide-on-mobile">
+        <a href="#skills">Skills ▾</a>
+        <div class="dropdown-menu">
+          <a href="#tools">Tools</a>
+        </div>
+      </div>
+
+      <div class="dropdown hide-on-mobile">
+        <a href="#projects">Projects ▾</a>
+        <div class="dropdown-menu">
+          <a href="#experience">Experience</a>
+          <a href="#projects">Every project</a>
+        </div>
+      </div>
+
+      <a href="#deployed" class="hide-on-mobile">Deployed Projects</a>
       <a href="#contact" class="hide-on-mobile">Contact</a>
+      <a href="Resume.pdf" class="nav-cv" download>Download CV</a>
       <button id="theme-button" aria-label="Switch light or dark theme">🌓</button>
     </div>
   </nav>
 
-  <!-- ===== HERO SECTION (photo left, text right) ===== -->
+  <!-- ===== HOME ===== -->
   <header class="hero" id="home">
     <div class="hero-content">
 
       <img class="hero-photo" src="imges/Anu.png" alt="Photo of Banoth Anusha" width="320" height="320">
 
       <div class="hero-text">
-  <p class="small-title">About</p>
-  <h1>Banoth Anusha</h1>
-  <p class="hero-description">
-    Computer Science graduate from IIT Goa, passionate about Software Engineering,
-    AI/ML, Backend and Full-Stack development. I build reliable, scalable
-    applications with Python, C++, SQL, FastAPI, Next.js and PostgreSQL.
-    Currently seeking Software Engineer, Backend, Full-Stack or AI/ML roles.
-  </p>
-  <a href="#projects" class="button button-main">View Projects</a>
-  <a href="resume.pdf" class="button button-outline" target="_blank" rel="noopener">View Resume</a>
-  <a href="resume.pdf" class="button button-outline" download>Download Resume</a>
-</div>
+        <p class="small-title">Hello, I'm</p>
+        <h1>Banoth Anusha</h1>
+        <p class="hero-description">
+          Computer Science graduate from IIT Goa. I take AI ideas all the way to working
+          products with Python, FastAPI, Next.js and PostgreSQL. Looking for AI/ML,
+          Backend, Full-Stack or Software Engineer roles.
+        </p>
+
+        <!-- LinkedIn and GitHub icon buttons -->
+        <div class="icon-links">
+          <a href="https://www.linkedin.com/in/anusha-banoth-b56404314" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+          <a href="https://github.com/anushabanoth-78" target="_blank" rel="noopener" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.1.1 1.7 1.2 1.7 1.2 1 1.7 2.7 1.2 3.3.9.1-.7.4-1.2.7-1.5-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.9 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.2c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+          </a>
+        </div>
+
+        <!-- Buttons from the sketch -->
+        <a href="#contact" class="button button-main">Hire me</a>
+        <a href="#contact" class="button button-outline">Contact me</a>
+        <a href="#projects" class="button button-outline">View project</a>
+        <a href="Resume.pdf" class="button button-outline" target="_blank" rel="noopener">View resume</a>
+        <a href="Resume.pdf" class="button button-outline" download>Download resume</a>
+      </div>
 
     </div>
   </header>
-<!-- Contact section -->
-  <section class="section contact" id="contact">
-  <p class="label">Let’s connect</p>
-  <!-- LinkedIn card with my photo -->
-   <h3>I Practice. I BuildI. Grow.</h3>
-  <a href="https://www.linkedin.com/in/anusha-banoth-b56404314" class="profile" target="_blank" rel="noopener">
-    <img src="imges/Anu.png" alt="Anusha Banoth" class="profile-photo">
-    <div class="profile-text">
-      <strong>Anusha Banoth</strong>
-      <span>AI/ML and Software Engineer</span>
-    </div>
-    <img src="imges/likdin.png" alt="LinkedIn" class="profile-logo">
-  </a>
 
-  <!-- Places where I practice every day -->
-  <h3 class="daily-title">Where I practice every day</h3>
-  <p class="daily-text">These are the platforms I use daily to improve my skills.</p>
-
-  <div class="sites">
-    <a href="https://github.com/anushabanoth-78" class="site" target="_blank" rel="noopener">
-      <img src="imges/github.png" alt="GitHub">
-      <span>GitHub</span>
-    </a>
-
-    <a href="https://leetcode.com/u/anushabanoth/" class="site" target="_blank" rel="noopener">
-      <img src="https://www.google.com/s2/favicons?domain=leetcode.com&sz=128" alt="LeetCode">
-      <span>LeetCode</span>
-    </a>
-
-    <a href="https://www.kaggle.com/banothanusha88" class="site" target="_blank" rel="noopener">
-      <img src="imges/kaggle.png" alt="Kaggle">
-      <span>Kaggle</span>
-    </a>
-
-    <a href="https://huggingface.co/anushabanoth-78" class="site" target="_blank" rel="noopener">
-      <img src="imges/hugging%20face.jpeg" alt="Hugging Face">
-      <span>Hugging Face</span>
-    </a>
-
-    <a href="PASTE_HACKERRANK_LINK" class="site" target="_blank" rel="noopener">
-      <img src="imges/hacker%20rank.png" alt="HackerRank">
-      <span>HackerRank</span>
-    </a>
-  </div>
-</section>
-  <!-- ===== STATS (the About link in the navbar comes here) ===== -->
+  <!-- ===== ABOUT ===== -->
   <section class="section" id="about">
+    <p class="label">About</p>
+    <h2>About me</h2>
+    <p class="about-text">
+      I am a Computer Science graduate from IIT Goa (B.Tech, 2026) who likes building AI
+      projects from data to deployment. My work covers NLP, computer vision and full-stack
+      RAG applications, and I am comfortable with Python, C++ and SQL. I am looking for an
+      entry-level AI/ML Engineer or Software Engineer role.
+    </p>
+
     <div class="stats">
       <div class="stat-box"><strong>98%</strong><span>Fake news test accuracy</span></div>
       <div class="stat-box"><strong>3,500+</strong><span>Frames tracked in cricket footage</span></div>
       <div class="stat-box"><strong>65+</strong><span>Persistent player IDs</span></div>
-      <div class="stat-box"><strong>3</strong><span>End-to-end AI projects</span></div>
+      <div class="stat-box"><strong>3</strong><span>End-to-end projects</span></div>
+    </div>
+
+    <!-- Education -->
+    <h2 id="education" class="sub-title">Education</h2>
+    <div class="info-row">
+      <h3>2022 – 2026</h3>
+      <p><strong>B.Tech, Computer Science and Engineering</strong>, Indian Institute of Technology Goa. CGPA 5.03/10.</p>
+    </div>
+    <div class="info-row">
+      <h3>2020 – 2022</h3>
+      <p><strong>Class 12</strong>, State Board, T.T.W. Residential Junior College of Excellence (Girls), Warangal. 89.4%.</p>
+    </div>
+    <div class="info-row">
+      <h3>2019 – 2020</h3>
+      <p><strong>Class 10</strong>, State Board, T.S. TWRES School for Girls, Kuravi. CGPA 9.8/10.</p>
     </div>
   </section>
 
-  <!-- ===== 3D SECTION ===== -->
-  <section class="section" id="playground">
-    <p class="label">Interactive</p>
-    <h2>Play with it</h2>
+  <!-- ===== SKILLS ===== -->
+  <section class="section" id="skills">
+    <p class="label">Skills</p>
+    <h2>Skills</h2>
 
-    <div class="three-box">
-      <canvas id="shape-canvas"></canvas>
-      <p class="three-hint">Drag to rotate</p>
+    <div class="info-row"><h3>Programming skills</h3><p>Python, C++, SQL, TypeScript</p></div>
+    <div class="info-row"><h3>AI and Machine Learning</h3><p>Machine Learning, Deep Learning, NLP, Computer Vision, RAG, Object Detection and Tracking, Scikit-learn, YOLOv8, OpenCV, TF-IDF</p></div>
+    <div class="info-row"><h3>Backend and Web</h3><p>FastAPI, Next.js, PostgreSQL, pgvector, Redis, Celery, Docker, REST APIs, JWT Authentication, Streamlit</p></div>
+    <div class="info-row"><h3>Core CS</h3><p>Data Structures and Algorithms, Operating Systems, Computer Networks</p></div>
+    <div class="info-row"><h3>Coursework</h3><p>Machine Learning, Artificial Intelligence, Probability and Statistics, Linear Algebra, Algorithm Design, Algebraic Algorithms, Discrete Structures</p></div>
+
+    <h3 id="tools" class="sub-title">Tools</h3>
+    <div class="info-row"><h3>Tools</h3><p>Git, GitHub, Linux, VS Code</p></div>
+
+    <!-- Profile chips -->
+    <div class="sites">
+      <a href="https://www.linkedin.com/in/anusha-banoth-b56404314" class="site" target="_blank" rel="noopener"><img src="imges/likdin.png" alt=""><span>LinkedIn</span></a>
+      <a href="https://github.com/anushabanoth-78" class="site" target="_blank" rel="noopener"><img src="imges/github.png" alt=""><span>GitHub</span></a>
+      <a href="https://leetcode.com/u/anushabanoth/" class="site" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?domain=leetcode.com&sz=128" alt=""><span>LeetCode</span></a>
+      <a href="https://www.kaggle.com/banothanusha88" class="site" target="_blank" rel="noopener"><img src="imges/kaggle.png" alt=""><span>Kaggle</span></a>
+      <a href="https://huggingface.co/anushabanoth-78" class="site" target="_blank" rel="noopener"><img src="imges/hugging%20face.jpeg" alt=""><span>Hugging Face</span></a>
+      <!-- TODO: put your real HackerRank link, or delete this chip -->
+      <a href="https://www.hackerrank.com/" class="site" target="_blank" rel="noopener"><img src="imges/hacker%20rank.png" alt=""><span>HackerRank</span></a>
     </div>
   </section>
 
-  <!-- ===== PROJECTS SECTION ===== -->
+  <!-- ===== PROJECTS ===== -->
   <section class="section" id="projects">
-    <p class="label">Selected Work</p>
+    <p class="label">Projects</p>
     <h2>Projects</h2>
 
     <div class="project-grid">
 
-      <!-- Project 1 -->
       <article class="project-card">
         <small>Nov 2025 – Feb 2026</small>
         <h3>Fake News and Misinformation Detector</h3>
-        <p>
-          End-to-end NLP pipeline that classifies news as REAL or FAKE using TF-IDF and
-          Logistic Regression, reaching 98% test accuracy. Evaluated with a confusion matrix,
-          ROC and precision-recall curves, and deployed as a live Streamlit app.
-        </p>
+        <p>NLP pipeline that classifies news as REAL or FAKE using TF-IDF and Logistic Regression, reaching 98% test accuracy. Deployed as a Streamlit app.</p>
         <div class="tags"><span>Python</span><span>Scikit-learn</span><span>TF-IDF</span><span>Streamlit</span></div>
         <div class="project-links">
-          <a href="https://fake-news-detector-mtehccappl5kvfmycnu63vq.streamlit.app/" target="_blank" rel="noopener">Live Demo ↗</a>
           <a href="https://github.com/anushabanoth-78/Fake-News-Detector" target="_blank" rel="noopener">GitHub ↗</a>
         </div>
       </article>
 
-      <!-- Project 2 -->
       <article class="project-card">
         <small>Nov 2025 – Apr 2026</small>
         <h3>Sports Player Detection and Tracking</h3>
-        <p>
-          YOLOv8 + ByteTrack pipeline for multi-person tracking across 3,500+ frames of
-          ICC T20 cricket footage. Keeps 65+ player IDs through occlusion, with speed
-          estimation (km/h), motion trails, heatmaps and a live HUD. Benchmarked ByteTrack
-          against BoT-SORT.
-        </p>
+        <p>YOLOv8 + ByteTrack pipeline tracking players across 3,500+ frames of cricket footage, with 65+ player IDs, speed estimation, heatmaps and a live HUD.</p>
         <div class="tags"><span>YOLOv8</span><span>ByteTrack</span><span>OpenCV</span><span>Supervision</span></div>
         <div class="project-links">
           <a href="https://github.com/anushabanoth-78/sports-tracker_project" target="_blank" rel="noopener">GitHub ↗</a>
         </div>
       </article>
 
-      <!-- Project 3 -->
       <article class="project-card">
         <small>2026</small>
         <h3>Enterprise RAG Knowledge Assistant</h3>
-        <p>
-          Full-stack app where users upload PDFs and get streaming answers with page-level
-          citations. Hybrid retrieval (pgvector + full-text search with Reciprocal Rank Fusion),
-          cross-encoder reranking, Celery + Redis ingestion, JWT auth and per-user isolation.
-        </p>
+        <p>Upload PDFs and get streaming answers with page-level citations. Hybrid retrieval, cross-encoder reranking, Celery + Redis ingestion, JWT auth.</p>
         <div class="tags"><span>FastAPI</span><span>Next.js</span><span>PostgreSQL</span><span>Docker</span></div>
         <div class="project-links">
           <a href="https://github.com/anushabanoth-78/enterprise-rag-knowledge-assistant" target="_blank" rel="noopener">GitHub ↗</a>
         </div>
       </article>
 
+      <!-- TODO: your sketch says 4 projects. Replace this card with your 4th project. -->
+      <article class="project-card">
+        <small>Add date</small>
+        <h3>Your 4th project</h3>
+        <p>Write 1–2 lines about what it does and the result it achieved.</p>
+        <div class="tags"><span>Tech 1</span><span>Tech 2</span></div>
+        <div class="project-links">
+          <a href="https://github.com/anushabanoth-78" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+      </article>
+
     </div>
   </section>
 
-  <!-- ===== SKILLS SECTION ===== -->
-  <section class="section" id="skills">
-    <p class="label">Toolbox</p>
-    <h2>Skills</h2>
-
-    <div class="info-row"><h3>Programming</h3><p>Python, C++, SQL, TypeScript</p></div>
-    <div class="info-row"><h3>AI and ML</h3><p>Machine Learning, Deep Learning, NLP, Computer Vision, RAG, Object Detection and Tracking, Scikit-learn, YOLOv8, OpenCV</p></div>
-    <div class="info-row"><h3>Backend and Web</h3><p>FastAPI, Next.js, PostgreSQL, pgvector, Redis, Celery, Docker, REST APIs, JWT, Streamlit</p></div>
-    <div class="info-row"><h3>Core CS</h3><p>Data Structures and Algorithms, Operating Systems, Computer Networks</p></div>
-    <div class="info-row"><h3>Tools</h3><p>Git, GitHub, Linux, VS Code</p></div>
-  </section>
-
-  <!-- ===== EDUCATION SECTION ===== -->
-  <section class="section" id="education">
-    <p class="label">Background</p>
-    <h2>Education and More</h2>
-
+  <!-- ===== EXPERIENCE ===== -->
+  <section class="section" id="experience">
+    <p class="label">Experience</p>
+    <h2>Experience</h2>
     <div class="info-row">
-      <h3>2022 – 2026</h3>
-      <p><strong>B.Tech, Computer Science and Engineering</strong>, Indian Institute of Technology Goa.
-         Bachelor’s Thesis Project: fake news classification (NLP) and multi-player tracking (computer vision).</p>
-    </div>
-    <div class="info-row">
-      <h3>Certification</h3>
-      <p>The Complete Full-Stack Web Development Bootcamp (61.5 hrs), Udemy, July 2025</p>
+      <h3>2025 – 2026</h3>
+      <p><strong>Bachelor's Thesis Project, IIT Goa.</strong> Two independent research projects under faculty supervision: fake news classification (NLP) and multi-player detection and tracking in cricket footage (computer vision). Owned both from data preparation to evaluation and deployment.</p>
     </div>
     <div class="info-row">
       <h3>Leadership</h3>
       <p>Event Coordinator, Cultrang Fest · Team Member, Motorsports Club (IIT Goa)</p>
     </div>
+    <div class="info-row">
+      <h3>Certification</h3>
+      <p>The Complete Full-Stack Web Development Bootcamp (61.5 hrs), Udemy, July 2025</p>
+    </div>
   </section>
 
-  
+  <!-- ===== DEPLOYED PROJECTS ===== -->
+  <section class="section" id="deployed">
+    <p class="label">Live</p>
+    <h2>Deployed Projects</h2>
+    <div class="project-grid">
+      <article class="project-card">
+        <small>Live on Streamlit</small>
+        <h3>Fake News and Misinformation Detector</h3>
+        <p>Paste a news article and get a REAL or FAKE prediction in real time.</p>
+        <div class="project-links">
+          <a href="https://fake-news-detector-mtehccappl5kvfmycnu63vq.streamlit.app/" target="_blank" rel="noopener">Live Demo ↗</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT (services on top, contact details below) ===== -->
+  <section class="section contact" id="contact">
+    <p class="label">Contact</p>
+    <h2>Services</h2>
+    <div class="services">
+      <span>AI/ML model development</span>
+      <span>Computer vision pipelines</span>
+      <span>RAG and LLM applications</span>
+      <span>Backend APIs with FastAPI</span>
+      <span>Full-stack web apps</span>
+    </div>
+
+    <h2 class="contact-title">Contact</h2>
+    <p class="contact-name">Banoth Anusha</p>
+    <p class="contact-line">
+      <a href="mailto:banothanusha900@gmail.com">banothanusha900@gmail.com</a><br>
+      <a href="tel:+916302193400">+91 6302193400</a><br>
+      Hyderabad, Telangana, India
+    </p>
+    <a href="mailto:banothanusha900@gmail.com" class="button button-main">Hire me</a>
+    <a href="Resume.pdf" class="button button-outline" download>Download resume</a>
+  </section>
 
   <footer class="footer">
     <p>© 2026 Banoth Anusha · Hyderabad, India</p>
   </footer>
 
-  <!-- Libraries (loaded from CDN) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-
-  <!-- My own JavaScript -->
+  <!-- main.js: theme button only (the 3D section was removed) -->
   <script src="js/main.js"></script>
 </body>
 </html>

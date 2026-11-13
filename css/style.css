@@ -1,542 +1,113 @@
-/* =========================================================
-   Anusha's Portfolio - style.css
-   1. Colors (light and dark)
-   2. Basic reset
-   3. Navbar
-   4. Hero (photo left, text right)
-   5. 3D section
-   6. Sections, about, stats
-   7. Project cards
-   8. Skills / education rows
-   9. Contact, profile card, practice sites, footer
-   10. Mobile screens
-   ========================================================= */
+/* extra.css: put in css/ folder, loaded AFTER style.css */
 
-
-/* ---------- 1. COLORS ---------- */
-:root {
-  --bg: #f4f3ef;
-  --card: #ffffff;
-  --text: #14141a;
-  --muted: #5d5d6b;
-  --accent: #6d4aff;
-  --border: #dcdbe3;
+/* Navbar dropdowns (About, Skills, Projects) */
+.dropdown {
+  position: relative;
 }
-
-/* Dark colors: used when the computer/phone is in dark mode */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #08080d;
-    --card: #12121a;
-    --text: #f2f2f7;
-    --muted: #9a9aab;
-    --accent: #8f7bff;
-    --border: #23232f;
-  }
-}
-
-/* Used when the visitor clicks the theme button */
-:root[data-theme="dark"] {
-  --bg: #08080d;
-  --card: #12121a;
-  --text: #f2f2f7;
-  --muted: #9a9aab;
-  --accent: #8f7bff;
-  --border: #23232f;
-}
-
-
-/* ---------- 2. BASIC RESET ---------- */
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 70px;   /* so the navbar does not cover section titles */
-}
-
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  font-family: "Space Grotesk", system-ui, sans-serif;
-  line-height: 1.6;
-  overflow-x: hidden;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-h2 {
-  font-size: clamp(28px, 5vw, 44px);
-  margin: 8px 0 28px;
-}
-
-/* Visible outline for keyboard users */
-a:focus-visible,
-button:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 3px;
-}
-
-
-/* ---------- 3. NAVBAR ---------- */
-.navbar {
-  position: fixed;
-  top: 0;
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
   left: 0;
-  right: 0;
-  z-index: 10;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px 24px;
-  background: var(--bg);
-  border-bottom: 1px solid var(--border);
-}
-
-.logo {
-  font-weight: 700;
-  letter-spacing: 2px;
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  font-size: 14px;
-  color: var(--muted);
-}
-
-.nav-links a:hover {
-  color: var(--accent);
-}
-
-#theme-button {
-  font: inherit;
-  background: none;
-  color: var(--text);
+  min-width: 140px;
+  padding: 8px 0;
+  background: var(--card);
   border: 1px solid var(--border);
-  border-radius: 999px;
-  padding: 4px 12px;
-  cursor: pointer;
+  border-radius: 12px;
+}
+.dropdown:hover .dropdown-menu,
+.dropdown:focus-within .dropdown-menu {
+  display: block;
+}
+.dropdown-menu a {
+  display: block;
+  padding: 6px 16px;
+  white-space: nowrap;
 }
 
-
-/* ---------- 4. HERO (photo left, text right) ---------- */
-.hero {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  padding: 100px 22px 60px;
-}
-
-.hero-content {
-  max-width: 1040px;
-  width: 100%;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  gap: 50px;
-}
-
-.hero-text {
-  flex: 1;
-  order: 2;                     /* order 2 = right side */
-}
-
-.small-title {
+.nav-cv {
   color: var(--accent);
-  font-size: 12px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  margin: 0;
-}
-
-.hero h1 {
-  font-size: clamp(40px, 7vw, 80px);
-  line-height: 1.05;
-  margin: 14px 0;
-}
-
-.hero-description {
-  color: var(--muted);
-  font-size: 18px;
-  max-width: 480px;
-  margin: 0 0 22px;
-}
-
-.hero-photo {
-  order: 1;                     /* order 1 = left side */
-  flex-shrink: 0;               /* photo never gets squeezed */
-  width: 320px;
-  height: 320px;
-  border-radius: 50%;
-  object-fit: cover;
-  object-position: center 20%;  /* keeps the face inside the circle */
-  border: 3px solid var(--accent);
-  padding: 6px;
-  background: var(--bg);
-}
-
-/* Buttons used in hero and contact */
-.button {
-  display: inline-block;
-  padding: 11px 24px;
-  margin: 6px 12px 6px 0;
-  border-radius: 999px;
   font-weight: 500;
 }
 
-.button-main {
-  background: var(--accent);
-  color: #ffffff;
-}
-
-.button-outline {
-  border: 1px solid var(--border);
-  background: var(--bg);
-}
-
-
-/* ---------- 5. 3D SECTION ---------- */
-.three-box {
-  position: relative;
-  height: 420px;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 24px;
-  overflow: hidden;
-}
-
-#shape-canvas {
-  width: 100%;
-  height: 100%;
-  display: block;
-  cursor: grab;
-  touch-action: pan-y;   /* phone can still scroll up and down */
-}
-
-.three-hint {
-  position: absolute;
-  bottom: 14px;
-  width: 100%;
-  margin: 0;
-  text-align: center;
-  color: var(--muted);
-  font-size: 12px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  pointer-events: none;
-}
-
-
-/* ---------- 6. SECTIONS, ABOUT, STATS ---------- */
-.section {
-  max-width: 1040px;
-  margin: 0 auto;
-  padding: 80px 22px;
-}
-
-.label {
-  color: var(--accent);
-  font-size: 13px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  margin: 0;
-}
-
-/* About is followed by Contact, so keep the bottom gap small */
-#about {
-  padding-bottom: 30px;
-}
-
-.about-layout {
+/* Hero icon buttons (LinkedIn, GitHub) */
+.icon-links {
   display: flex;
-}
-
-.about-text {
-  max-width: 760px;
-  color: var(--muted);
-  font-size: 18px;
-}
-
-.stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 16px;
-  margin-top: 40px;
-}
-
-.stat-box {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 18px;
-}
-
-.stat-box strong {
-  display: block;
-  font-size: 32px;
-  color: var(--accent);
-}
-
-.stat-box span {
-  color: var(--muted);
-  font-size: 13px;
-}
-
-
-/* ---------- 7. PROJECT CARDS ---------- */
-.project-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-  gap: 20px;
-}
-
-.project-card {
-  display: flex;
-  flex-direction: column;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  padding: 24px;
-  transition: transform 0.3s, border-color 0.3s;
-}
-
-/* card moves up a little when mouse is over it */
-.project-card:hover {
-  transform: translateY(-6px);
-  border-color: var(--accent);
-}
-
-.project-card small {
-  color: var(--muted);
-}
-
-.project-card h3 {
-  margin: 4px 0 10px;
-  font-size: 20px;
-}
-
-.project-card p {
-  flex: 1;              /* pushes the links to the bottom of every card */
-  color: var(--muted);
-  font-size: 14px;
-  margin: 0 0 14px;
-}
-
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
+  gap: 10px;
   margin-bottom: 14px;
 }
-
-.tags span {
-  font-size: 12px;
-  color: var(--muted);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  padding: 2px 10px;
-}
-
-.project-links a {
-  color: var(--accent);
-  font-size: 14px;
-  font-weight: 500;
-  margin-right: 16px;
-}
-
-
-/* ---------- 8. SKILLS / EDUCATION ROWS ---------- */
-.info-row {
+.icon-links a {
+  width: 38px;
+  height: 38px;
   display: grid;
-  grid-template-columns: minmax(140px, 1fr) 3fr;
-  gap: 16px;
-  padding: 16px 0;
-  border-top: 1px solid var(--border);
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 15px;
 }
-
-.info-row h3 {
-  margin: 0;
-  font-size: 16px;
+.icon-links a:hover {
+  border-color: var(--accent);
   color: var(--accent);
 }
 
-.info-row p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 15px;
+/* Sub headings inside sections */
+.sub-title {
+  font-size: 22px;
+  margin: 48px 0 12px;
+}
+h3.sub-title {
+  color: var(--accent);
+  font-size: 16px;
 }
 
-
-/* ---------- 9. CONTACT, PROFILE CARD, PRACTICE SITES, FOOTER ---------- */
-.contact {
-  text-align: center;
-  padding-top: 30px;      /* small gap after the About stats */
-  padding-bottom: 60px;
+/* Profile chips under Skills */
+#skills .sites {
+  justify-content: flex-start;
+  margin-top: 28px;
 }
 
-.contact h2 {
-  margin: 8px 0 24px;
-}
-
-/* in the contact section the buttons are centered, so equal margins */
-.contact .button {
-  margin: 6px;
-}
-
-/* LinkedIn card (compact pill) */
-.profile {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 20px;
-  padding: 8px 14px 8px 8px;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  text-align: left;
-  font-size: 13px;
-  line-height: 1.3;
-  transition: border-color 0.25s, transform 0.25s;
-}
-
-.profile:hover {
-  border-color: var(--accent);
-  transform: translateY(-2px);
-}
-
-.profile-photo {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  object-fit: cover;
-  object-position: center 20%;
-}
-
-.profile-text {
-  display: flex;
-  flex-direction: column;
-}
-
-.profile-text strong {
-  font-size: 13px;
-  font-weight: 600;
-}
-
-.profile-text span {
-  font-size: 11px;
-  color: var(--muted);
-}
-
-.profile-logo {
-  width: 18px;
-  height: 18px;
-  object-fit: contain;
-  margin-left: 4px;
-}
-
-/* Daily practice platforms (compact chips) */
-.daily-title {
-  margin: 36px 0 2px;
-  font-size: 15px;
-  font-weight: 600;
-}
-
-.daily-text {
-  margin: 0 0 14px;
-  color: var(--muted);
-  font-size: 12px;
-}
-
-.sites {
+/* Services chips + contact block */
+.services {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 8px;
+  margin-bottom: 8px;
 }
-
-.site {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 14px 6px 8px;
+.services span {
+  padding: 6px 14px;
+  font-size: 14px;
+  color: var(--muted);
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 999px;
-  font-size: 13px;
+}
+.contact .contact-title {
+  margin-top: 48px;
+}
+.contact-name {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+.contact-line {
   color: var(--muted);
-  transition: border-color 0.25s, color 0.25s, transform 0.25s;
+  margin: 0 0 18px;
+}
+.contact-line a:hover {
+  color: var(--accent);
 }
 
-.site:hover {
-  border-color: var(--accent);
-  color: var(--text);
-  transform: translateY(-2px);
+/* Contact is now last, so restore normal top padding */
+.contact {
+  padding-top: 80px;
 }
 
-.site img {
-  width: 22px;
-  height: 22px;
-  object-fit: contain;
-  border-radius: 6px;
-  background: #ffffff;   /* keeps dark logos visible in dark mode */
-  padding: 2px;
-}
+/* Sections: scroll offset only */
+#about { padding-bottom: 60px; }
 
-.footer {
-  text-align: center;
-  color: var(--muted);
-  font-size: 13px;
-  padding: 24px;
-  border-top: 1px solid var(--border);
-}
-
-
-/* ---------- 10. MOBILE SCREENS ---------- */
-@media (max-width: 700px) {
-  .hero-content {
-    flex-direction: column;       /* photo on top, text below */
-    text-align: center;
-    gap: 30px;
-  }
-
-  .hero-description {
-    margin: 0 auto 22px;
-  }
-
-  .hero-photo {
-    width: 220px;
-    height: 220px;
-  }
-
-  .hero .button {
-    margin: 6px;
-  }
-}
-
+/* Mobile: dropdown links are hidden with .hide-on-mobile */
 @media (max-width: 560px) {
-  .hide-on-mobile {
-    display: none;
-  }
-
-  .info-row {
-    grid-template-columns: 1fr;
-    gap: 4px;
-  }
-}
-
-
-/* People who turn off animations in their phone settings */
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
+  .nav-cv { font-size: 13px; }
 }
