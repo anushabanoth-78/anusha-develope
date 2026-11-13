@@ -3,7 +3,8 @@
    Three jobs:
    1. Dark / light theme button
    2. Fade-in animation when scrolling (GSAP)
-   3. 3D shape in the hero section (Three.js)
+   3. Optional 3D shape (Three.js) - only runs if a
+      <canvas id="hero-canvas"> exists in the HTML
    ========================================================= */
 
 var rootElement = document.documentElement;
@@ -22,18 +23,18 @@ function isDarkModeOn() {
   return window.matchMedia("(prefers-color-scheme: dark)").matches;
 }
 
-document.getElementById("theme-button").addEventListener("click", function () {
-  if (isDarkModeOn()) {
-    rootElement.setAttribute("data-theme", "light");
-  } else {
-    rootElement.setAttribute("data-theme", "dark");
-  }
+var themeButton = document.getElementById("theme-button");
 
-  // Update the 3D shape color to match the new theme
-  if (typeof updateShapeColor === "function") {
-    updateShapeColor();
-  }
-});
+if (themeButton) {
+  themeButton.addEventListener("click", function () {
+    rootElement.setAttribute("data-theme", isDarkModeOn() ? "light" : "dark");
+
+    // Update the 3D shape color to match the new theme
+    if (typeof updateShapeColor === "function") {
+      updateShapeColor();
+    }
+  });
+}
 
 
 /* ---------- 2. SCROLL ANIMATIONS (GSAP) ---------- */
@@ -50,12 +51,13 @@ function setupScrollAnimations() {
     opacity: 0,
     duration: 1,
     stagger: 0.2,
-    ease: "power3.out"
+    ease: "power3.out",
+    clearProps: "all"          // removes inline styles when done
   });
 
   // These elements fade in when they reach the screen
   var itemsToAnimate = gsap.utils.toArray(
-    ".about-layout, .stat-box, .project-card, .info-row, .contact > *, .section > .label, .section > h2"
+    ".stat-box, .project-card, .info-row, .services, .contact > *, .section > .label, .section > h2"
   );
 
   itemsToAnimate.forEach(function (item) {
@@ -67,6 +69,14 @@ function setupScrollAnimations() {
       scrollTrigger: {
         trigger: item,
         start: "top 90%"
+      },
+      // CSS transitions fight with GSAP, so turn them off while animating
+      onStart: function () {
+        item.style.transition = "none";
+      },
+      // Give hover effects back to CSS when the animation ends
+      onComplete: function () {
+        gsap.set(item, { clearProps: "all" });
       }
     });
   });
@@ -75,14 +85,16 @@ function setupScrollAnimations() {
 setupScrollAnimations();
 
 
-/* ---------- 3. 3D HERO SHAPE (Three.js) ---------- */
+/* ---------- 3. 3D SHAPE (Three.js) ---------- */
 var updateShapeColor;   // made global so the theme button can call it
 
 function setup3DHero() {
   // If Three.js did not load, the page still works without the shape
   if (typeof THREE === "undefined") return;
 
+  // If the page has no canvas, there is nothing to draw
   var canvas = document.getElementById("hero-canvas");
+  if (!canvas) return;
 
   // Renderer = draws the 3D scene on the canvas
   var renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
@@ -120,7 +132,7 @@ function setup3DHero() {
 
   // Use the accent color from CSS for all the 3D parts
   updateShapeColor = function () {
-    var accent = getComputedStyle(rootElement).getPropertyValue("--accent").trim() || "#6d4aff";
+    var accent = getComputedStyle(rootElement).getPropertyValue("--accent").trim() || "#5b3df5";
     knotMaterial.color.set(accent);
     coreMaterial.color.set(accent);
     dotMaterial.color.set(accent);
@@ -131,6 +143,7 @@ function setup3DHero() {
   function resizeCanvas() {
     var width = canvas.clientWidth;
     var height = canvas.clientHeight;
+    if (!width || !height) return;
     renderer.setSize(width, height, false);
     camera.aspect = width / height;
     camera.updateProjectionMatrix();

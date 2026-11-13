@@ -1,113 +1,616 @@
-/* extra.css: put in css/ folder, loaded AFTER style.css */
+/* =========================================================
+   Banoth Anusha Portfolio - style.css (single file)
+   1. Colors (light and dark)
+   2. Reset and base
+   3. Navbar and dropdowns
+   4. Hero
+   5. Buttons
+   6. Sections, about, stats
+   7. Skills and education rows
+   8. Profile chips
+   9. Project cards
+   10. Contact and services
+   11. Footer
+   12. Responsive
+   ========================================================= */
 
-/* Navbar dropdowns (About, Skills, Projects) */
-.dropdown {
-  position: relative;
+
+/* ---------- 1. COLORS ---------- */
+:root {
+  --bg: #f6f5f1;
+  --card: #ffffff;
+  --text: #16161d;
+  --muted: #5f5f6e;
+  --accent: #5b3df5;
+  --accent-soft: rgba(91, 61, 245, 0.1);
+  --border: #e0dfe6;
+  --shadow: 0 8px 24px rgba(20, 20, 30, 0.08);
 }
-.dropdown-menu {
-  display: none;
-  position: absolute;
-  top: 100%;
+
+/* Dark colors when the device is in dark mode */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0b0b11;
+    --card: #14141c;
+    --text: #f2f2f7;
+    --muted: #a0a0b2;
+    --accent: #9a88ff;
+    --accent-soft: rgba(154, 136, 255, 0.14);
+    --border: #262633;
+    --shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  }
+}
+
+/* When the visitor clicks the theme button */
+:root[data-theme="dark"] {
+  --bg: #0b0b11;
+  --card: #14141c;
+  --text: #f2f2f7;
+  --muted: #a0a0b2;
+  --accent: #9a88ff;
+  --accent-soft: rgba(154, 136, 255, 0.14);
+  --border: #262633;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
+
+/* ---------- 2. RESET AND BASE ---------- */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;   /* navbar does not cover section titles */
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1, h2, h3 {
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.15;
+  margin: 6px 0 28px;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+
+/* ---------- 3. NAVBAR AND DROPDOWNS ---------- */
+.navbar {
+  position: fixed;
+  top: 0;
   left: 0;
-  min-width: 140px;
-  padding: 8px 0;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 12px;
+  right: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 28px;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
 }
-.dropdown:hover .dropdown-menu,
-.dropdown:focus-within .dropdown-menu {
-  display: block;
+
+.logo {
+  font-weight: 700;
+  font-size: 18px;
 }
-.dropdown-menu a {
-  display: block;
-  padding: 6px 16px;
-  white-space: nowrap;
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.nav-links a:hover {
+  color: var(--accent);
 }
 
 .nav-cv {
   color: var(--accent);
-  font-weight: 500;
+  font-weight: 600;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  padding: 5px 14px;
 }
 
-/* Hero icon buttons (LinkedIn, GitHub) */
+.nav-cv:hover {
+  background: var(--accent);
+  color: #ffffff !important;
+}
+
+#theme-button {
+  font: inherit;
+  background: none;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 4px 12px;
+  cursor: pointer;
+}
+
+#theme-button:hover {
+  border-color: var(--accent);
+}
+
+/* Dropdown (About, Skills, Projects) */
+.dropdown {
+  position: relative;
+}
+
+.dropdown > a {
+  display: block;
+  padding: 10px 0;          /* no gap, so the menu does not close on mouse move */
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: -12px;
+  min-width: 160px;
+  padding: 8px 0;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+.dropdown:hover .dropdown-menu,
+.dropdown:focus-within .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 7px 18px;
+  white-space: nowrap;
+}
+
+.dropdown-menu a:hover {
+  background: var(--accent-soft);
+}
+
+
+/* ---------- 4. HERO ---------- */
+.hero {
+  display: flex;
+  align-items: center;
+  padding: 120px 22px 50px;
+}
+
+.hero-content {
+  max-width: 1040px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 56px;
+}
+
+.hero-photo {
+  order: 1;                      /* left side */
+  flex-shrink: 0;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 20%;   /* keeps the face inside the circle */
+  border: 3px solid var(--accent);
+  padding: 6px;
+  background: var(--bg);
+  box-shadow: var(--shadow);
+}
+
+.hero-text {
+  order: 2;                      /* right side */
+  flex: 1;
+}
+
+.small-title {
+  color: var(--accent);
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.hero h1 {
+  font-size: clamp(40px, 7vw, 72px);
+  line-height: 1.05;
+  margin: 8px 0 16px;
+}
+
+.hero-description {
+  color: var(--muted);
+  font-size: 18px;
+  max-width: 500px;
+  margin: 0 0 20px;
+}
+
+/* LinkedIn and GitHub icon buttons */
 .icon-links {
   display: flex;
   gap: 10px;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
+
 .icon-links a {
-  width: 38px;
-  height: 38px;
+  width: 40px;
+  height: 40px;
   display: grid;
   place-items: center;
+  background: var(--card);
   border: 1px solid var(--border);
   border-radius: 10px;
   font-weight: 700;
   font-size: 15px;
+  transition: border-color 0.2s, color 0.2s, transform 0.2s;
 }
+
 .icon-links a:hover {
   border-color: var(--accent);
   color: var(--accent);
+  transform: translateY(-2px);
 }
 
-/* Sub headings inside sections */
-.sub-title {
-  font-size: 22px;
-  margin: 48px 0 12px;
+
+/* ---------- 5. BUTTONS ---------- */
+.button {
+  display: inline-block;
+  padding: 10px 22px;
+  margin: 6px 10px 6px 0;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 500;
+  transition: transform 0.2s, border-color 0.2s;
 }
-h3.sub-title {
+
+.button:hover {
+  transform: translateY(-2px);
+}
+
+.button-main {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.button-outline {
+  background: var(--card);
+  border: 1px solid var(--border);
+}
+
+.button-outline:hover {
+  border-color: var(--accent);
+}
+
+
+/* ---------- 6. SECTIONS, ABOUT, STATS ---------- */
+.section {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 72px 22px;
+}
+
+.label {
   color: var(--accent);
+  font-size: 15px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.about-text {
+  max-width: 760px;
+  color: var(--muted);
+  font-size: 18px;
+  margin: 0;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+  margin-top: 36px;
+}
+
+.stat-box {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 18px;
+}
+
+.stat-box strong {
+  display: block;
+  font-size: 32px;
+  line-height: 1.2;
+  color: var(--accent);
+}
+
+.stat-box span {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* Smaller headings inside a section (Education, Tools) */
+.sub-title {
+  font-size: 24px;
+  margin: 56px 0 14px;
+}
+
+h3.sub-title {
+  font-size: 18px;
+  color: var(--accent);
+  margin: 40px 0 6px;
+}
+
+
+/* ---------- 7. SKILLS AND EDUCATION ROWS ---------- */
+.info-row {
+  display: grid;
+  grid-template-columns: minmax(150px, 1fr) 3fr;
+  gap: 16px;
+  padding: 16px 0;
+  border-top: 1px solid var(--border);
+}
+
+.info-row h3 {
+  margin: 0;
   font-size: 16px;
+  color: var(--accent);
 }
 
-/* Profile chips under Skills */
-#skills .sites {
+.info-row p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.info-row strong {
+  color: var(--text);
+}
+
+
+/* ---------- 8. PROFILE CHIPS ---------- */
+.sites {
+  display: flex;
+  flex-wrap: wrap;
   justify-content: flex-start;
-  margin-top: 28px;
+  gap: 10px;
+  margin-top: 32px;
 }
 
-/* Services chips + contact block */
+.site {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px 6px 8px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 14px;
+  color: var(--muted);
+  transition: border-color 0.2s, color 0.2s, transform 0.2s;
+}
+
+.site:hover {
+  border-color: var(--accent);
+  color: var(--text);
+  transform: translateY(-2px);
+}
+
+.site img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  border-radius: 6px;
+  background: #ffffff;     /* keeps dark logos visible in dark mode */
+  padding: 2px;
+}
+
+
+/* ---------- 9. PROJECT CARDS ---------- */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 20px;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 24px;
+  transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent);
+  box-shadow: var(--shadow);
+}
+
+.project-card small {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.project-card h3 {
+  margin: 4px 0 10px;
+  font-size: 20px;
+  line-height: 1.25;
+}
+
+.project-card p {
+  flex: 1;                 /* pushes links to the bottom of every card */
+  color: var(--muted);
+  font-size: 15px;
+  margin: 0 0 14px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.tags span {
+  font-size: 12px;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-radius: 999px;
+  padding: 2px 10px;
+}
+
+.project-links a {
+  color: var(--accent);
+  font-size: 15px;
+  font-weight: 600;
+  margin-right: 16px;
+}
+
+.project-links a:hover {
+  text-decoration: underline;
+}
+
+
+/* ---------- 10. CONTACT AND SERVICES ---------- */
+.contact {
+  text-align: center;
+  padding-bottom: 80px;
+}
+
+.contact .button {
+  margin: 6px;
+}
+
 .services {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 8px;
-  margin-bottom: 8px;
+  gap: 10px;
 }
+
 .services span {
-  padding: 6px 14px;
+  padding: 7px 16px;
   font-size: 14px;
   color: var(--muted);
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 999px;
 }
+
 .contact .contact-title {
-  margin-top: 48px;
+  margin-top: 56px;
 }
+
 .contact-name {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 700;
   margin: 0 0 6px;
 }
+
 .contact-line {
   color: var(--muted);
-  margin: 0 0 18px;
+  margin: 0 0 20px;
 }
+
 .contact-line a:hover {
   color: var(--accent);
 }
 
-/* Contact is now last, so restore normal top padding */
-.contact {
-  padding-top: 80px;
+
+/* ---------- 11. FOOTER ---------- */
+.footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
+  padding: 24px;
+  border-top: 1px solid var(--border);
 }
 
-/* Sections: scroll offset only */
-#about { padding-bottom: 60px; }
 
-/* Mobile: dropdown links are hidden with .hide-on-mobile */
+/* ---------- 12. RESPONSIVE ---------- */
+@media (max-width: 900px) {
+  .hide-on-mobile {
+    display: none;            /* keeps only Download CV and theme button */
+  }
+}
+
+@media (max-width: 700px) {
+  .hero-content {
+    flex-direction: column;   /* photo on top, text below */
+    text-align: center;
+    gap: 28px;
+  }
+
+  .hero-photo {
+    width: 220px;
+    height: 220px;
+  }
+
+  .hero-description {
+    margin: 0 auto 20px;
+  }
+
+  .icon-links {
+    justify-content: center;
+  }
+
+  .hero .button {
+    margin: 6px;
+  }
+}
+
 @media (max-width: 560px) {
-  .nav-cv { font-size: 13px; }
+  .navbar {
+    padding: 12px 16px;
+  }
+
+  .info-row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .sites {
+    justify-content: center;
+  }
+}
+
+/* People who turn off animations in their device settings */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  * {
+    transition: none !important;
+  }
 }
